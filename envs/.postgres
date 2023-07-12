@@ -1,7 +1,7 @@
 # PostgreSQL
 
-POSTGRES_HOST=postgres
+POSTGRES_HOST="dumbo.db.elephantsql.com"
 POSTGRES_PORT=5432
-POSTGRES_DB=task_ap
-POSTGRES_USER=debug
-POSTGRES_PASSWORD=debug
+POSTGRES_DB="enlpsbro"
+POSTGRES_USER="enlpsbro"
+POSTGRES_PASSWORD="TeTXL2raudHsjfrN4MCwo7TpG8AQjEPq"
