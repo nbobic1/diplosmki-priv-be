@@ -25,7 +25,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['.vercel.app']
 
 # Application definition
-
+WSGI_APPLICATION = 'vercel_app.wsgi.app'
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
