@@ -13,7 +13,15 @@ class PostsListView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = PostInfoSerializer
     pagination_class = HundredSetPagination
-    queryset = Post.objects.filter(published=True)
+    def get_queryset(self):
+        owner=[self.request.user.id]
+        try:
+            owner.append(PostProvider.objects.get(reciever=self.request.user.id))
+        except Exception as e:
+             print(owner)
+        print(owner)
+        queryset = Post.objects.filter(published=True,user_id__in=owner)
+        return queryset
 
 
 class PostView(GenericAPIView):
@@ -21,9 +29,7 @@ class PostView(GenericAPIView):
     serializer_class = PostDetailsSerializer
 
     def get(self, request, post_id):
-        owners = [request.user.id]
-        #here you should add other users from PostProvider to owners
-        post = Post.objects.get(id=post_id,user_id__in=owners)
+        post = Post.objects.get(id=post_id)
         return Response(PostDetailsSerializer(post).data, status=status.HTTP_201_CREATED)
 
     def post(self, request):
@@ -86,7 +92,7 @@ class PostProviderView(GenericAPIView):
     def get(self, request):
         try:
             print("###############################################")
-            providers = list(PostProvider.objects.filter(reciever=request.user))
+            providers = list(PostProvider.objects.filter(reciever=request.user.id))
             for i in range(len(providers)):
                 providers[i] =providers[i].provider.id
             providers.append(request.user.id)
