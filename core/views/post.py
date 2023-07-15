@@ -21,8 +21,9 @@ class PostView(GenericAPIView):
     serializer_class = PostDetailsSerializer
 
     def get(self, request, post_id):
-        owners = [request.user]
-        post = Post.objects.get(id=post_id,user=owners)
+        owners = [request.user.id]
+        #here you should add other users from PostProvider to owners
+        post = Post.objects.get(id=post_id,user_id__in=owners)
         return Response(PostDetailsSerializer(post).data, status=status.HTTP_201_CREATED)
 
     def post(self, request):
