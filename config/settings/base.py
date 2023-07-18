@@ -95,11 +95,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-POSTGRES_DB = "enlpsbro"
+POSTGRES_DB = "diplomski"
 POSTGRES_SCHEMA = env("POSTGRES_SCHEMA", default="public")
-POSTGRES_USER ="enlpsbro"
-POSTGRES_PASSWORD = "TeTXL2raudHsjfrN4MCwo7TpG8AQjEPq"
-POSTGRES_HOST ="dumbo.db.elephantsql.com" 
+POSTGRES_USER ="diplomski_user"
+POSTGRES_PASSWORD = "Z0BCpUoSsSzlGvhcaJYNMYXeWctkalTY"
+POSTGRES_HOST ="dpg-cir9tftph6ev5rfn3v90-a" 
 POSTGRES_PORT = 5432
 
 
